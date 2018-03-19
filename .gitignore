@@ -1,11 +1,14 @@
-#Gradle 
-.gradle/
-build/
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
 
-
-# Eclipse
+### STS ###
+.apt_generated
 .classpath
+.factorypath
 .project
-.settings/
+.settings
+.springBeans
 .sts4-cache
-bin/
+
+/bin/
