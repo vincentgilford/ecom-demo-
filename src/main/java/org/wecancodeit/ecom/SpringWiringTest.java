@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EcomApplication {
+public class SpringWiringTest {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EcomApplication.class, args);
+		SpringApplication.run(SpringWiringTest.class, args);
 	}
 }
