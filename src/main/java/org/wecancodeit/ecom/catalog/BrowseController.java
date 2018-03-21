@@ -32,8 +32,7 @@ public class BrowseController {
 		if(selectedProduct != null) {
 			return selectedProduct; 
 		}
-		
-			return productRepo.findOne(id);  
+			throw new ProductNotFoundException();
 	}
 	
 	//expected to get an error at a higher level where ids do not exists
@@ -42,7 +41,7 @@ public class BrowseController {
 	//------>
 	
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public class ProdcutNotFoundException extends RuntimeException{
+	public class ProductNotFoundException extends RuntimeException{
 
 	}
 

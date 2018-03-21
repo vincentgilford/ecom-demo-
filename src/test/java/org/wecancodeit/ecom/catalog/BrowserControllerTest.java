@@ -18,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.repository.CrudRepository;
+import org.wecancodeit.ecom.catalog.BrowseController.ProductNotFoundException;
 
 public class BrowserControllerTest {
 
@@ -39,37 +40,25 @@ public class BrowserControllerTest {
 	}
 
 	@Test
-	public void useMocks() {
-		Iterable<Product> result = underTest.findProducts();
-
+	public void shouldRetrieveProducts() {
 		when(productRepo.findAll()).thenReturn(Collections.singleton((product)));
 
-		assertThat(result, contains(product));
-
-	}
-
-	@Test
-	public void shouldGetProducts() {
-		BrowseController underTest = new BrowseController();
-
 		Iterable<Product> result = underTest.findProducts();
-
-		assertThat(result, contains(any(Product.class))); //Iterable does not have a size method
+		
+		assertThat(result, contains(any(Product.class)));
 	}
 
+	
 	@Test
 	public void shouldGetProductsFromDb() {
-		// if we want to use a mock repository we may run into the issue
-		// we want to inject mocks via BrowserController
-		//
+		// if we want to use a mock repository we may run into the issues
+		// we want to inject mocks via tested BrowserController
 		when(productRepo.findAll()).thenReturn(Collections.singleton(product));
 
 		Iterable<Product> result = underTest.findProducts();
 		
 		assertThat(result, contains(product));
-		
-		
-		
+		//using singleton allows for lack of size attribute that Iterable doesn't have
 	}
 
 	@Test
@@ -79,7 +68,7 @@ public class BrowserControllerTest {
 		when(productRepo.findOne(id)).thenReturn(product); 
 
 		 Product result = underTest.findProduct(id);
-		 //I am confused by this why are we giving it a long??
+		
 		 
 
 		 assertThat(result, is(product));
@@ -87,12 +76,12 @@ public class BrowserControllerTest {
 		 
 	}
 	// we want to verify it is talking to our mock repository
-	// want to make sure asctula product given is mocked product; 
+	// want to make sure actual product given is mocked product; 
 	
-	@Test(expected = ProductNotFoundException.class)
+	@Test(expected =  ProductNotFoundException.class)
 	public void shouldRetunrNotFoundForBadProductID() {
 		//we are expecting to throw an exception
-		//
+		//we need our controller to account for the exception
 		long invalidProductID = 42L;
 		underTest.findProduct(invalidProductID); 
 		
