@@ -1,4 +1,4 @@
-package org.wecancodeit.ecom;
+package org.wecancodeit.ecom.catalog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

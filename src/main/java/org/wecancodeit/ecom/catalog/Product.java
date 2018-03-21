@@ -2,16 +2,17 @@ package org.wecancodeit.ecom.catalog;
 
 import java.util.Collection;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Entity
 public class Product {
 	
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
 	private long id;
 	private String name; 
 	
