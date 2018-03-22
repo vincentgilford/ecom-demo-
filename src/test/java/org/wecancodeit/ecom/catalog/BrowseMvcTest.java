@@ -1,5 +1,7 @@
 package org.wecancodeit.ecom.catalog;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -7,7 +9,6 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest
 @RunWith(SpringRunner.class)
-public class CatalogMvcTest {
+public class BrowseMvcTest {
 
 		@Resource
 		private MockMvc mvc; 

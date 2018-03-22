@@ -17,12 +17,12 @@ public class Product {
 	private String name; 
 	
 	
-	
+//why no more id??? 	
 	public long getId() {
 		return id;
 	}
 
-
+	
 
 	public String getName() {
 		return name;
@@ -34,7 +34,7 @@ public class Product {
 		this.name = name;
 		
 	}
-
+	@SuppressWarnings("unused")
 	private Product() {}; 
 
 	private Collection<Product> getProducts() {
@@ -43,3 +43,4 @@ public class Product {
 	}
 
 }
+//

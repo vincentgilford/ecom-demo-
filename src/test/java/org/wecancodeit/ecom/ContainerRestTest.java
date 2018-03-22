@@ -13,26 +13,46 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.wecancodeit.ecom.catalog.Product;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ContainerRestTest {
+//think of container rest as if you were in the browser doing things as the user
 
-
+	
+	
 	@Resource
 	private TestRestTemplate restTemplate;
 
+	@Resource
+	private ObjectMapper jsonMapper; 
+	
+	
 	@Test
-	public void exampleTest() {
+	public void shouldGetProducts() {
 		ResponseEntity<String> response = restTemplate.getForEntity("/products",String.class); 
 		
 		HttpStatus status = response.getStatusCode(); 
 		
-		assertThat(status, is(HttpStatus.OK));
-
-		
+		assertThat(status, is(HttpStatus.OK));		
 	}
 
+	
+	@Test
+	public void shouldCreateProduct() {
+		Product product = new Product("my new product");
+		
+		ResponseEntity<Product> response = restTemplate.postForEntity("/products", product, Product.class);
+		
+		
+		Product created = response.getBody();
+		assertThat(created.getId(), is(greaterThan(0L)));//?
+	}
+		
+	
 	
 }

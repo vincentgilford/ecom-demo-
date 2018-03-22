@@ -22,7 +22,13 @@ public class CatalogJpaTest {
 			//test to make sure it is a CRUDrepository -- will have to extend crud when we eventually
 			// do more specific things with the our productrepository
 			
+		}
+		
+		@Test
+		public void shouldASsignIdWhenProductIsCreated() {
+			Product product = new Product("my new product"); 
 			
+			product = productRepo.save(product);
 			
 		}
 		
